@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <title>Toy Web</title>
+    <Style>
+      .response-area {
+        width: 200px;
+        height: 200px;
+        display: block;
+        background-color: skyblue;
+      }
+    </Style>
+  </header>
+  <body>
+    <label class="response-area"></label>
+
+
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+      $(function() {
+        $.ajax({
+          url: '/api/v1',
+          success: function(response) {
+            console.log(response);
+            $('.response-area').text(response.Hello);
+          }
+        });
+
+        $.ajax({
+          url: '/api/v1/jwkim',
+          success: function(response) {
+            console.log(response);
+            alert(response);
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
