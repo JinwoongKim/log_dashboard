@@ -1,1 +1,1 @@
-cat /home/jwkim/example.log
+cat /home/jwkim/log/example.log

@@ -10,5 +10,6 @@ RUN pip install fastapi
 
 COPY ./main.py .
 RUN chmod +x main.py
+RUN mkdir log
 
 EXPOSE 8000
