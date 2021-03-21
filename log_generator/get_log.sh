@@ -1,1 +1,1 @@
-cat /home/jwkim/log/example.log
+cat /home/jwkim/log/log_generator.log

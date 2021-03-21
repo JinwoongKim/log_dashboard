@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from watchlist import watchlist
 
 app = FastAPI()
 
@@ -10,7 +11,11 @@ def read_test():
 def read_jwkim():
 	return "Welcome Jinwoong"
 
-@app.get("/api/v1/get_log")
-def get_log():
-	f = open("./log/example.log","r")
+@app.get("/api/v1/watchlist")
+def get_watchlist():
+	return watchlist
+
+@app.get("/api/v1/{log_name}")
+def get_log(log_name:str):
+	f = open("./log/{}.log".format(log_name),"r")
 	return f.read()
