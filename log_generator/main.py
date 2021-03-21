@@ -4,7 +4,7 @@ import time
 
 # TODO log rotation
 
-logging.basicConfig(filename='./log/example.log', encoding='utf-8', level=logging.INFO)
+logging.basicConfig(filename='./log/log_generator.log', encoding='utf-8', level=logging.INFO)
 
 while True:
     logging.info(datetime.datetime.now())
