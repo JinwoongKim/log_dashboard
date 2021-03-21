@@ -9,3 +9,8 @@ def read_test():
 @app.get("/api/v1/jwkim")
 def read_jwkim():
 	return "Welcome Jinwoong"
+
+@app.get("/api/v1/get_log")
+def get_log():
+	f = open("./log/example.log","r")
+	return f.read()

@@ -12,8 +12,7 @@ COPY get_log.sh .
 RUN chown jwkim:jwkim get_log.sh
 RUN chown jwkim:jwkim main.py
 RUN chmod +x get_log.sh
-
 USER jwkim
-
+RUN mkdir log
 
 ENTRYPOINT ["python","main.py"]
