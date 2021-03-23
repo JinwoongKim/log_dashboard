@@ -7,7 +7,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - /Users/jwkim/github/toy1/log_generator/log:/app/log/
+      - ./log_generator/log:/app/log/
       - ./api-service/watchlist.py/:/app/watchlist.py
 
   nginx:
