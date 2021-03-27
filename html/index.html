@@ -2,37 +2,59 @@
 <html>
   <header>
     <title>Toy Web</title>
-    <Style>
-      .response-area {
-        width: 200px;
-        height: 200px;
-        display: block;
-        background-color: skyblue;
-      }
-    </Style>
+    <link rel="stylesheet" href="./style.css" />
   </header>
   <body>
-    <label class="response-area"></label>
+    <div id="services-area"></div>
 
+    <div id="log-area"></div>
+
+
+    <div id="parts" class="display-none">
+      <div class="service">
+        <label name="servicename"></label>
+        <button name="status"></button>
+      </div>
+
+    </div>
 
     <script src="./jquery-3.6.0.min.js"></script>
     <script>
       $(function() {
-        $.ajax({
-          url: '/api/v1',
-          success: function(response) {
-            console.log(response);
-            $('.response-area').text(response.Hello);
-          }
-        });
+        var $services = $('#services-area');
 
-        $.ajax({
-          url: '/api/v1/jwkim',
-          success: function(response) {
-            console.log(response);
-            alert(response);
-          }
-        });
+        getServicelist();
+        setInterval(getServicelist, 1000 * 60); //1000ms * 60
+
+        function getServicelist() {
+          $.ajax({
+            url: '/api/v1/services',
+            success: function(response) {
+              $services.empty();
+              $.each(response, function(idx, val) {
+                var $elem = $('#parts > .service').clone();
+                $elem.find('[name="servicename"]').text(val.name);
+                $elem.find('[name="status"]').text(val.status);
+                $elem.find('[name="status"]').on('click', function() {
+                  getLog(val.name);
+                });
+                $elem.attr("id", val.name);
+                $elem.appendTo($services);
+              });
+            }
+          });
+        }
+
+        function getLog(servicename) {
+          $.ajax({
+            url: '/api/v1/service/' + servicename,
+            success: function(response) {
+              $('#log-area').text(response);
+            }
+          });
+        }
+
+        
 
       });
     </script>

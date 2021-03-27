@@ -1,0 +1,36 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#services-area {
+  width: 200px;
+  height: 100%;
+  background-color: brown;
+  float: left;
+}
+
+#log-area {
+  width: calc(100% - 200px);
+  height: 100%;
+  background-color: skyblue;
+  float: left;
+}
+
+.display-none {
+  display: none;
+}
+
+.service {
+  width: 190px;
+  height: 30px;
+  margin: 5px;
+  background-color: green;
+}
